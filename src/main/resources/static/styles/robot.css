@@ -1,0 +1,62 @@
+﻿body {
+    margin: 0 auto;
+    padding: 0;
+    background: url("../images/bg_robot.jpg") fixed center center no-repeat;
+    background-size: cover;
+    width: 100%;
+}
+
+.content {
+    width: 90%;
+    height: 600px;
+    margin: 0 auto;
+}
+
+.title {
+    width: 100%;
+    height: 80px;
+    margin-top: 30px;
+    background: #e08031;
+    float: left;
+    text-align: center;
+    line-height: 80px;
+    font-family: SimSun-ExtB;
+    font-size: 35px;
+    color: white;
+    border-radius: 5px;
+}
+
+.robot {
+    width: 25%;
+    height: 400px;
+    float: left;
+    margin-top: 160px;
+}
+
+.robot img {
+    width: 100%;
+    height: 100%;
+}
+
+.detail {
+    width: 1100px;
+    height: 500px;
+    margin-top: 100px;
+    background: pink;
+    float: left;
+    margin-left: 20px;
+    background: red;
+}
+.coppy-right {
+	background-color: #333;
+	color: #fff;
+	height: 50px;
+	text-align: center;
+	margin-top: 38px;
+	line-height: 50px;
+}
+.
+footer .wrap-footer {
+	padding: 60px 50px 20px 50px;
+	background-color: #404040;
+}

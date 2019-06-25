@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.karen.standardservicecloud.mapper.StandardlistMapper" >
+  <resultMap id="BaseResultMap" type="com.karen.standardservicecloud.po.Standardlist" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="sid" property="sid" jdbcType="VARCHAR" />
+    <result column="sname" property="sname" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="itime" property="itime" jdbcType="VARCHAR" />
+    <result column="ctime" property="ctime" jdbcType="VARCHAR" />
+    <result column="operation" property="operation" jdbcType="VARCHAR" />
+    <result column="ex1" property="ex1" jdbcType="VARCHAR" />
+    <result column="ex2" property="ex2" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, sid, sname, type, itime, ctime, operation, ex1, ex2
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.karen.standardservicecloud.po.StandardlistExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from standardlist
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from standardlist
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from standardlist
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.karen.standardservicecloud.po.StandardlistExample" >
+    delete from standardlist
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.karen.standardservicecloud.po.Standardlist" >
+    insert into standardlist (id, sid, sname, 
+      type, itime, ctime, 
+      operation, ex1, ex2
+      )
+    values (#{id,jdbcType=VARCHAR}, #{sid,jdbcType=VARCHAR}, #{sname,jdbcType=VARCHAR}, 
+      #{type,jdbcType=VARCHAR}, #{itime,jdbcType=VARCHAR}, #{ctime,jdbcType=VARCHAR}, 
+      #{operation,jdbcType=VARCHAR}, #{ex1,jdbcType=VARCHAR}, #{ex2,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.karen.standardservicecloud.po.Standardlist" >
+    insert into standardlist
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="sid != null" >
+        sid,
+      </if>
+      <if test="sname != null" >
+        sname,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="itime != null" >
+        itime,
+      </if>
+      <if test="ctime != null" >
+        ctime,
+      </if>
+      <if test="operation != null" >
+        operation,
+      </if>
+      <if test="ex1 != null" >
+        ex1,
+      </if>
+      <if test="ex2 != null" >
+        ex2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="sid != null" >
+        #{sid,jdbcType=VARCHAR},
+      </if>
+      <if test="sname != null" >
+        #{sname,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="itime != null" >
+        #{itime,jdbcType=VARCHAR},
+      </if>
+      <if test="ctime != null" >
+        #{ctime,jdbcType=VARCHAR},
+      </if>
+      <if test="operation != null" >
+        #{operation,jdbcType=VARCHAR},
+      </if>
+      <if test="ex1 != null" >
+        #{ex1,jdbcType=VARCHAR},
+      </if>
+      <if test="ex2 != null" >
+        #{ex2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.karen.standardservicecloud.po.StandardlistExample" resultType="java.lang.Integer" >
+    select count(*) from standardlist
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update standardlist
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sid != null" >
+        sid = #{record.sid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sname != null" >
+        sname = #{record.sname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.type != null" >
+        type = #{record.type,jdbcType=VARCHAR},
+      </if>
+      <if test="record.itime != null" >
+        itime = #{record.itime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ctime != null" >
+        ctime = #{record.ctime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.operation != null" >
+        operation = #{record.operation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ex1 != null" >
+        ex1 = #{record.ex1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ex2 != null" >
+        ex2 = #{record.ex2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update standardlist
+    set id = #{record.id,jdbcType=VARCHAR},
+      sid = #{record.sid,jdbcType=VARCHAR},
+      sname = #{record.sname,jdbcType=VARCHAR},
+      type = #{record.type,jdbcType=VARCHAR},
+      itime = #{record.itime,jdbcType=VARCHAR},
+      ctime = #{record.ctime,jdbcType=VARCHAR},
+      operation = #{record.operation,jdbcType=VARCHAR},
+      ex1 = #{record.ex1,jdbcType=VARCHAR},
+      ex2 = #{record.ex2,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.karen.standardservicecloud.po.Standardlist" >
+    update standardlist
+    <set >
+      <if test="sid != null" >
+        sid = #{sid,jdbcType=VARCHAR},
+      </if>
+      <if test="sname != null" >
+        sname = #{sname,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="itime != null" >
+        itime = #{itime,jdbcType=VARCHAR},
+      </if>
+      <if test="ctime != null" >
+        ctime = #{ctime,jdbcType=VARCHAR},
+      </if>
+      <if test="operation != null" >
+        operation = #{operation,jdbcType=VARCHAR},
+      </if>
+      <if test="ex1 != null" >
+        ex1 = #{ex1,jdbcType=VARCHAR},
+      </if>
+      <if test="ex2 != null" >
+        ex2 = #{ex2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.karen.standardservicecloud.po.Standardlist" >
+    update standardlist
+    set sid = #{sid,jdbcType=VARCHAR},
+      sname = #{sname,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      itime = #{itime,jdbcType=VARCHAR},
+      ctime = #{ctime,jdbcType=VARCHAR},
+      operation = #{operation,jdbcType=VARCHAR},
+      ex1 = #{ex1,jdbcType=VARCHAR},
+      ex2 = #{ex2,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

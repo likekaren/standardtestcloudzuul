@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.karen.standardservicecloud.mapper.StandardlistMapperCustom">
+	
+	<!-- 商品查询的sql片段
+
+
+	建议是以单表为单位定义查询条件
+	建议将常用的查询条件都写出来
+	 -->
+	<sql id="query_standardlist_where">
+		<if test="standardlistCustom!=null">
+			
+			<if test="standardlistCustom.sid!=null and standardlistCustom.sid!=''">
+				and  sid = #{standardlistCustom.sid}
+			</if>
+			<if test="standardlistCustom.sname!=null and standardlistCustom.sname!=''">
+				and  sid = #{standardlistCustom.sname}
+			</if>
+			
+		</if>
+		
+	</sql>
+	
+	<!-- 商品查询 -->
+	<select id="findStandardList" parameterType="com.karen.standardservicecloud.po.StandardQueryVo"
+			resultType="com.karen.standardservicecloud.po.StandardlistCustom">
+		SELECT * FROM standardlist
+		<where>
+			<include refid="query_standardlist_where"/>
+		</where>
+
+	</select>
+
+	<select id="findStandardStr" parameterType="String"
+			resultType="com.karen.standardservicecloud.po.StandardlistCustom">
+		SELECT * FROM standardlist WHERE sid = #{sid}
+
+
+	</select>
+	
+	
+
+</mapper>
